@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        >
+
+
+        <TextView
+            android:id="@+id/one"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/assistor_2"
+            android:background="@drawable/assistor"
+            android:gravity="center"
+            android:text="主持人互动"
+            android:paddingTop="25dp"
+            android:drawablePadding="5dp"
+            />
+
+        <TextView
+            android:id="@+id/two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="信息与资讯"
+            android:background="@drawable/assistor2"
+            android:paddingTop="25dp"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:layout_alignTop="@+id/one"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/one"
+            android:drawableTop="@drawable/domain_assistor"/>
+
+        <TextView
+            android:id="@+id/three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="在线小红娘"
+            android:background="@drawable/assistor3"
+            android:paddingTop="25dp"
+            android:drawablePadding="5dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:layout_below="@+id/one"
+            android:drawableTop="@drawable/find_user_assistor"/>
+
+        <TextView
+            android:id="@+id/four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="资料速配"
+            android:gravity="center"
+            android:background="@drawable/assistor4"
+            android:paddingTop="25dp"
+            android:drawablePadding="5dp"
+            android:layout_below="@+id/two"
+            android:layout_alignLeft="@+id/two"
+            android:layout_marginTop="5dp"
+            android:drawableTop="@drawable/talk_assistor"/>
+
+    </RelativeLayout>
+
+
+</FrameLayout>
