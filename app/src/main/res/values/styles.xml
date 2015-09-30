@@ -5,4 +5,21 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="MaterialBaseTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- customize the color palette -->
+        <item name="colorPrimary">@color/material_blue_500</item>
+        <item name="colorPrimaryDark">@color/material_blue_700</item>
+        <item name="colorAccent">@color/material_green_A200</item>
+    </style>
+
+    <style name="collapsed_text_color">
+        <item name="android:textColor">@android:color/holo_green_light</item>
+    </style>
+
+    <style name="expanded_text_color">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 </resources>

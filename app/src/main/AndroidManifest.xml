@@ -14,8 +14,9 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.RecycleViewActivity_"
+            android:name=".ui.MaterialsActivity_"
             android:screenOrientation="portrait"
+            android:theme="@style/MaterialTheme"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -26,6 +27,10 @@
         <activity
             android:name=".ui.MainActivity_"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.RecycleViewActivity_"
+            android:screenOrientation="portrait"/>
+
 
         <activity
             android:name=".ui.ViewAnimationActivity_"
