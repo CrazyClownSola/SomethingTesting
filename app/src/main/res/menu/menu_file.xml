@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/file"
+        android:title="文件">
+        <!-- "file" submenu -->
+        <menu>
+            <item
+                android:id="@+id/create_new"
+                android:title="创建文件"/>
+            <item
+                android:id="@+id/open"
+                android:title="打开文件"
+
+                />
+        </menu>
+    </item>
+</menu>

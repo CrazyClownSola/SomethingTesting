@@ -5,16 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorSet;
-
 /**
  * Description:
  * <p/>
  * author: Sola
- * 2015/9/25
+ * 2015/10/13
  */
-public interface IRecycleListItem {
+public interface IRecycleExtraItem extends IRecycleListItem {
     // ===========================================================
     // Constants
     // ===========================================================
@@ -28,13 +25,5 @@ public interface IRecycleListItem {
     // ===========================================================
 
 
-    /**
-     * @param context 　控件组件
-     */
-    View getView(Context context, ViewGroup parent);
-
-    RecyclerView.ViewHolder getHolder(Context context, ViewGroup parent);
-
-    void refreshView(Context context, RecyclerView.ViewHolder holder);
-
+    int getViewType();
 }

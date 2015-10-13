@@ -21,6 +21,9 @@ ext {
     okHttpVersion = '2.4.0'
     materialVersion = '1.0.2'
     annotationVersion = '3.3.1'
+    cubeVersion = '1.0.10'
+    cubeClogVersion = '1.0.2'
+    cubeSDKVersion = '1.0.44'
 
 
     appDependencies = [
@@ -35,7 +38,10 @@ ext {
             gson                  : "com.google.code.gson:gson:${gsonVersion}",
             okHttp                : "com.squareup.okhttp:okhttp:${okHttpVersion}",
             material              : "com.balysv:material-ripple:${materialVersion}",
-            eventBus              : "de.greenrobot:eventbus:${eventBusVersion}"
+            eventBus              : "de.greenrobot:eventbus:${eventBusVersion}",
+            cube                  : "in.srain.cube:ultra-ptr:${cubeVersion}",
+            cube_clog             : "in.srain.cube:clog:${cubeClogVersion}",
+            cube_sdk              : "in.srain.cube:cube-sdk:${cubeSDKVersion}"
     ]
 
 }

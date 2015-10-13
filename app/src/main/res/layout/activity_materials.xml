@@ -17,7 +17,6 @@
         android:background="?attr/colorPrimary"
         app:subtitle="Sub"
         app:title="Title"
-
         >
 
     </android.support.v7.widget.Toolbar>
@@ -89,8 +88,9 @@
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
         android:layout_gravity="right|bottom"
+        android:layout_marginBottom="5dp"
+        android:background="?attr/colorPrimary"
         />
 
 

@@ -13,10 +13,10 @@ import java.util.List;
  * Description:
  * <p/>
  * author: Sola
- * 2015/9/25
+ * 2015/10/13
  */
-public class RecycleViewAdapter<Param extends IRecycleListItem>
-        extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class BasicRecycleViewAdapter<Param extends IRecycleListItem>
+        extends RecycleHeaderAndFooterViewAdapter {
 
     // ===========================================================
     // Constants
@@ -28,43 +28,35 @@ public class RecycleViewAdapter<Param extends IRecycleListItem>
 
     protected List<Param> cacheList;
 
-    protected final Context mContext;
-
     // ===========================================================
     // Constructors
     // ===========================================================
 
-    public RecycleViewAdapter(Context mContext, List<Param> cacheList) {
+    public BasicRecycleViewAdapter(Context mContext, List<Param> cacheList) {
+        super(mContext);
         refreshList(cacheList);
-        this.mContext = mContext;
     }
 
     // ===========================================================
     // Getter & Setter
     // ===========================================================
 
-
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return cacheList.get(viewType).getHolder(mContext, parent);
-    }
-
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        cacheList.get(position).refreshView(mContext, holder);
-    }
-
-    @Override
-    public int getItemCount() {
+    protected int getCount() {
         return cacheList == null ? 0 : cacheList.size();
     }
 
     @Override
-    public int getItemViewType(int position) {
-        return position;
+    protected void onBindView(Context mContext, RecyclerView.ViewHolder holder, int position) {
+        cacheList.get(position).refreshView(mContext, holder);
+    }
+
+    @Override
+    protected RecyclerView.ViewHolder onCreateView(Context mContext, ViewGroup parent, int viewType) {
+        return cacheList.get(viewType).getHolder(mContext, parent);
     }
 
     // ===========================================================
@@ -99,20 +91,8 @@ public class RecycleViewAdapter<Param extends IRecycleListItem>
             notifyItemRemoved(position);
         }
     }
-
-    public void moveItem(Param item, int newPosition) {
-        int position = cacheList.indexOf(item);
-        if (position != -1) {
-            cacheList.remove(position);
-            cacheList.add(newPosition, item);
-        }
-    }
-
-
     // ===========================================================
     // Inner and Anonymous Classes
     // ===========================================================
 
-
 }
-

@@ -18,6 +18,9 @@ dependencies {
     compile presentationDependencies.appcompat
     compile presentationDependencies.cardview
     compile presentationDependencies.design
+    // 一个第三方的下拉刷新的库包
+    compile presentationDependencies.cube
+//    compile presentationDependencies.cube_sdk
     // gson解析的库包
     compile presentationDependencies.gson
     compile fileTree(include: ['*.jar'], dir: 'libs')

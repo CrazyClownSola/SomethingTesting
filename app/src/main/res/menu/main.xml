@@ -20,5 +20,10 @@
         android:orderInCategory="100"
         android:title="Refresh"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_show"
+        android:orderInCategory="100"
+        android:title="Show"
+        app:showAsAction="never"/>
 
 </menu>

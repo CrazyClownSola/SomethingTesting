@@ -3,6 +3,7 @@ package com.sola.testing.solatesting;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.nineoldandroids.animation.AnimatorSet;
 import com.sola.testing.solatesting.recycleview.utils.IRecycleAnimatorListItem;
@@ -45,17 +46,22 @@ public class TestTwoItem implements IRecycleAnimatorListItem {
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
     @Override
-    public View getView(Context context) {
+    public View getView(Context context, ViewGroup parent) {
         return TestTwoItemView_.build(context);
     }
 
     @Override
-    public RecyclerView.ViewHolder getHolder(Context context) {
-        return new ViewHolder(getView(context));
+    public RecyclerView.ViewHolder getHolder(Context context, ViewGroup parent) {
+        return null;
     }
 
+//    @Override
+//    public RecyclerView.ViewHolder getHolder(Context context) {
+//        return new ViewHolder(getView(context));
+//    }
+
     @Override
-    public void refreshView(RecyclerView.ViewHolder holder) {
+    public void refreshView(Context context, RecyclerView.ViewHolder holder) {
         TestTwoItemView view = (TestTwoItemView) holder.itemView;
         view.id_text_test.setText(test);
     }
