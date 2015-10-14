@@ -1,12 +1,27 @@
 package com.sola.testing.solatesting.ui;
 
+import android.annotation.TargetApi;
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.ChangeTransform;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
 
+import com.sola.testing.solatesting.MainApplication;
 import com.sola.testing.solatesting.R;
 import com.sola.testing.solatesting.TestItemDTO;
 import com.sola.testing.solatesting.TestTwoItem;
@@ -21,10 +36,12 @@ import com.sola.testing.solatesting.view.load_more.interfaces.RecycleLoadMoreHan
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +67,9 @@ public class RecycleViewActivity extends AppCompatActivity {
 
     @ViewById
     Toolbar id_tool_bar;
+
+    @ViewById
+    ImageView id_image_item_shown;
 
     @ViewById
     PtrFrameLayout id_ptr_frame;
@@ -82,12 +102,80 @@ public class RecycleViewActivity extends AppCompatActivity {
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        MainApplication.BUS.register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        MainApplication.BUS.unregister(this);
+    }
+
+    @TargetApi(21)
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAfterTransition();
+    }
+
     // ===========================================================
     // Methods
     // ===========================================================
 
+    @TargetApi(21)
+    @Click
+    public void id_image_item_shown(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this, RecycleDetailActivity_.class);
+        ((ViewGroup) id_image_item_shown.getParent()).setTransitionGroup(false);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        ((BitmapDrawable) id_image_item_shown.getDrawable()).getBitmap().
+                compress(Bitmap.CompressFormat.PNG, 100, stream);
+        intent.putExtra("image", stream.toByteArray());
+        ActivityOptions options =
+                ActivityOptions.makeSceneTransitionAnimation(this,
+                        v,
+                        "image_transition"
+                );
+//            options.
+        startActivity(intent, options.toBundle());
+    }
+
+
+    @TargetApi(21)
+    @UiThread
+    public void onEvent(TestItemDTO e) {
+        if (e != null) {
+            Intent intent = new Intent();
+            intent.setClass(this, RecycleDetailActivity_.class);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//            id_ptr_frame.setTransitionGroup(false);?
+            ((ViewGroup) e.getId_image_item_shown().getParent()).setTransitionGroup(true);
+//            ((ViewGroup) (e.getId_image_item_shown().getParent()).getParent()).setTransitionGroup(false);
+            ((BitmapDrawable) e.getId_image_item_shown().getDrawable()).getBitmap().
+                    compress(Bitmap.CompressFormat.PNG, 100, stream);
+//            e.getId_image_item_shown().getParent().tr
+            intent.putExtra("image", stream.toByteArray());
+            ActivityOptions options =
+                    ActivityOptions.makeSceneTransitionAnimation(this,
+                            e.getId_image_item_shown(),
+                            "image_transition"
+                    );
+//            options.
+            startActivity(intent, options.toBundle());
+        }
+    }
+
+    @TargetApi(21)
     @AfterViews
     public void afterViews() {
+//        android.transition.
+        getWindow().setExitTransition(new ChangeTransform());
+//        getWindow().setEnterTransition(new Slide());
+
         setSupportActionBar(id_tool_bar);
         id_load_more_container.setLoadMoreHandler(new RecycleLoadMoreHandler() {
             @Override

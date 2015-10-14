@@ -1,17 +1,14 @@
-package com.sola.testing.solatesting;
+package com.sola.testing.solatesting.event;
 
-import android.app.Application;
-
-import de.greenrobot.event.EventBus;
-
+import android.widget.ImageView;
 
 /**
  * Description:
  * <p/>
  * author: Sola
- * 2015/9/16
+ * 2015/10/14
  */
-public class MainApplication extends Application {
+public class ItemClickEvent  {
     // ===========================================================
     // Constants
     // ===========================================================
@@ -20,12 +17,7 @@ public class MainApplication extends Application {
     // Fields
     // ===========================================================
 
-//    @Inject
-//    LocationManager locationManager;
-//
-//    ApplicationComponent component;
-
-    public static final EventBus BUS = new EventBus();
+//    ImageView
 
     // ===========================================================
     // Constructors
@@ -39,14 +31,6 @@ public class MainApplication extends Application {
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-//        component = DaggerMainApp
-//        NotificationCompat
-    }
-
-
     // ===========================================================
     // Methods
     // ===========================================================
@@ -54,11 +38,5 @@ public class MainApplication extends Application {
     // ===========================================================
     // Inner and Anonymous Classes
     // ===========================================================
-//    @Singleton
-//    @Component(modules = ApplicationModule.class)
-//    public interface ApplicationComponent {
-////        void inject(MainApplication application);
-////
-////        void inject(MainActivity mainActivity);
-//    }
+
 }

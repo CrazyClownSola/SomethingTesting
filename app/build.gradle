@@ -20,6 +20,9 @@ dependencies {
     compile presentationDependencies.design
     // 一个第三方的下拉刷新的库包
     compile presentationDependencies.cube
+
+    compile presentationDependencies.eventBus
+
 //    compile presentationDependencies.cube_sdk
     // gson解析的库包
     compile presentationDependencies.gson

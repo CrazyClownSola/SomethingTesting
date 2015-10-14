@@ -1,19 +1,29 @@
 package com.sola.testing.solatesting;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.sola.testing.solatesting.recycleview.utils.IRecycleAnimatorListItem;
+import com.sola.testing.solatesting.ui.RecycleDetailActivity_;
 import com.sola.testing.solatesting.view.TestItemView;
 import com.sola.testing.solatesting.view.TestItemView_;
+
+import java.io.ByteArrayOutputStream;
 
 /**
  * Description:
@@ -34,6 +44,8 @@ public class TestItemDTO implements IRecycleAnimatorListItem {
 
     String test;
 
+    ViewHolder mHolder;
+
     // ===========================================================
     // Constructors
     // ===========================================================
@@ -47,9 +59,18 @@ public class TestItemDTO implements IRecycleAnimatorListItem {
     // Getter & Setter
     // ===========================================================
 
+
+    public ImageView getId_image_item_shown() {
+        return mHolder.id_image_item_shown;
+    }
+//    public ViewHolder getHolder() {
+//        return mHolder;
+//    }
+
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
+    @TargetApi(21)
     @Override
     public View getView(final Context context, ViewGroup parent) {
         View v = LayoutInflater.from(context).inflate(R.layout.list_item_test_item_dto,
@@ -58,7 +79,22 @@ public class TestItemDTO implements IRecycleAnimatorListItem {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, test, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.setClass(context, RecycleDetailActivity_.class);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//            id_ptr_frame.setTransitionGroup(false);?
+//            ((ViewGroup) (e.getId_image_item_shown().getParent()).getParent()).setTransitionGroup(false);
+                ((BitmapDrawable) getId_image_item_shown().getDrawable()).getBitmap().
+                        compress(Bitmap.CompressFormat.PNG, 100, stream);
+//            e.getId_image_item_shown().getParent().tr
+                intent.putExtra("image", stream.toByteArray());
+                ActivityOptions options =
+                        ActivityOptions.makeSceneTransitionAnimation((Activity) context,
+                                getId_image_item_shown(),
+                                "image_transition"
+                        );
+//            options.
+                context.startActivity(intent, options.toBundle());
             }
         });
         return v;
@@ -67,7 +103,8 @@ public class TestItemDTO implements IRecycleAnimatorListItem {
 
     @Override
     public RecyclerView.ViewHolder getHolder(final Context context, ViewGroup parent) {
-        return new ViewHolder(getView(context, parent));
+        mHolder = new ViewHolder(getView(context, parent));
+        return mHolder;
     }
 
 
@@ -75,17 +112,11 @@ public class TestItemDTO implements IRecycleAnimatorListItem {
     public void refreshView(Context context, RecyclerView.ViewHolder holder) {
 //        holder
 //        TestItemView view = (TestItemView) holder.itemView;
-        ((ViewHolder) holder).id_text_test.setText(test);
+        mHolder.id_text_test.setText(test);
+//        mHolder.id_image_item_shown.setImageDrawable(
+//                context.getResources().getDrawable(R.drawable.item_translation));
     }
-//
-//    @Override
-//    public Animator[] getAnimators(View view) {
-//        ObjectAnimator alpha = ObjectAnimator.ofFloat(view, "alpha", 0, 1f);
-//        ObjectAnimator scaleX = ObjectAnimator.ofFloat(view, "scaleX", 0, 1f);
-//        ObjectAnimator scaleY = ObjectAnimator.ofFloat(view, "scaleY", 0, 1f);
-//        return new ObjectAnimator[]{alpha, scaleX, scaleY};
-////        return new Animator[0];
-//    }
+
 
     @Override
     public AnimatorSet getAnimatorSet(View view) {
@@ -108,11 +139,14 @@ public class TestItemDTO implements IRecycleAnimatorListItem {
     // ===========================================================
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView id_text_test;
+        ImageView id_image_item_shown;
 
         public ViewHolder(
                 View v) {
             super(v);
             id_text_test = (TextView) v.findViewById(R.id.id_text_test);
+            id_image_item_shown = (ImageView) v.findViewById(R.id.id_image_item_shown);
         }
+
     }
 }

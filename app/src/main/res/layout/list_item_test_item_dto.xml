@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
+              android:layout_height="120dp"
               android:background="#FFFFFF"
-              android:padding="20dp"
-              android:orientation="vertical">
+              android:orientation="horizontal"
+              android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/id_image_item_shown"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:src="@drawable/item_translation"
+        android:transitionName="image_transition"
+        />
 
 
     <TextView
         android:id="@+id/id_text_test"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:background="@color/material_blue_500"
         android:gravity="center"
@@ -20,10 +29,10 @@
         android:textStyle="bold|italic|normal"/>
 
     <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:text="123123"-->
-        <!--android:textStyle="bold|italic|normal"/>-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:text="123123"-->
+    <!--android:textStyle="bold|italic|normal"/>-->
 
 </LinearLayout>
