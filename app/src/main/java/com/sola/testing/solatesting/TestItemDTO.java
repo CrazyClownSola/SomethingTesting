@@ -112,7 +112,7 @@ public class TestItemDTO implements IRecycleAnimatorListItem {
     public void refreshView(Context context, RecyclerView.ViewHolder holder) {
 //        holder
 //        TestItemView view = (TestItemView) holder.itemView;
-        mHolder.id_text_test.setText(test);
+        ((ViewHolder) holder).id_text_test.setText(test);
 //        mHolder.id_image_item_shown.setImageDrawable(
 //                context.getResources().getDrawable(R.drawable.item_translation));
     }

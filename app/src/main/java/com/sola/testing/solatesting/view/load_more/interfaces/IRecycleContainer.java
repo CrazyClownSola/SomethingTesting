@@ -40,14 +40,4 @@ public interface IRecycleContainer {
     void loadMoreError(int errorCode, String errorMessage);
 
 
-//    /* --------------------------- 下拉刷新的种种方法 --------------------------- */
-//
-//    void setRefreshUIHandler(RefreshUIHandler handler);
-//
-//    void setRefreshHandler(RefreshHandler handler);
-//
-//    void refreshComplete();
-//
-//    void refreshError(int errorCode,String errorMessage);
-
 }

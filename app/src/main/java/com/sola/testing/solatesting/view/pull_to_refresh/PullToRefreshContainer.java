@@ -1,18 +1,20 @@
-package com.sola.testing.solatesting.view.load_more;
+package com.sola.testing.solatesting.view.pull_to_refresh;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
 
-import com.sola.testing.solatesting.R;
+import com.sola.testing.solatesting.view.pull_to_refresh.interfaces.IPullToRefreshContainer;
+import com.sola.testing.solatesting.view.pull_to_refresh.interfaces.IPullToRefreshHandler;
+import com.sola.testing.solatesting.view.pull_to_refresh.interfaces.IPullToRefreshUIHandler;
 
 /**
  * Description:
  * <p/>
  * author: Sola
- * 2015/10/13
+ * 2015/10/16
  */
-public class RecyclerContainer extends RecycleContainerBase {
+public class PullToRefreshContainer extends ViewGroup implements IPullToRefreshContainer {
 
     // ===========================================================
     // Constants
@@ -21,39 +23,56 @@ public class RecyclerContainer extends RecycleContainerBase {
     // ===========================================================
     // Fields
     // ===========================================================
-    RecyclerView mRecyclerView;
 
     // ===========================================================
     // Constructors
     // ===========================================================
-    public RecyclerContainer(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
 
-    public RecyclerContainer(Context context) {
+    public PullToRefreshContainer(Context context) {
         super(context);
     }
 
+    public PullToRefreshContainer(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public PullToRefreshContainer(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
 
     // ===========================================================
     // Getter & Setter
     // ===========================================================
 
-    public RecyclerView getRecyclerView() {
-        return mRecyclerView;
-    }
-
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
+
     @Override
-    protected RecyclerView retrieveRecycleView() {
-        if (getChildCount() > 1) {
-            throw new NullPointerException("");
-        }
-        mRecyclerView = (RecyclerView) getChildAt(0);
-        return mRecyclerView;
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+
     }
+
+    @Override
+    public void refreshComplete() {
+
+    }
+
+    @Override
+    public void autoRefresh(boolean atOnce) {
+
+    }
+
+    @Override
+    public void addPTRUIHandler(IPullToRefreshUIHandler handler) {
+
+    }
+
+    @Override
+    public void setPTRHandler(IPullToRefreshHandler handler) {
+
+    }
+
     // ===========================================================
     // Methods
     // ===========================================================

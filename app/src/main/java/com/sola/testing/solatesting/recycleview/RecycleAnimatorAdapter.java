@@ -17,7 +17,7 @@ import java.util.List;
  * 2015/9/28
  */
 public class RecycleAnimatorAdapter<Param extends IRecycleAnimatorListItem>
-        extends RecycleViewAdapter<Param> {
+        extends BasicRecycleViewAdapter<Param> {
 
     // ===========================================================
     // Constants
@@ -51,8 +51,8 @@ public class RecycleAnimatorAdapter<Param extends IRecycleAnimatorListItem>
     // ===========================================================
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        super.onBindViewHolder(holder, position);
+    protected void onBindView(Context mContext, RecyclerView.ViewHolder holder, int position) {
+        super.onBindView(mContext, holder, position);
         AnimatorSet animSet = cacheList.get(position).getAnimatorSet(holder.itemView);
         if (animSet != null) {
             if (!isFirstOnly || position > mLastPosition) {

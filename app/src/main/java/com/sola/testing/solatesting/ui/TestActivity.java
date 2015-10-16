@@ -1,19 +1,22 @@
-package com.sola.testing.solatesting.view.load_more;
+package com.sola.testing.solatesting.ui;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
+import android.support.v7.app.AppCompatActivity;
 
 import com.sola.testing.solatesting.R;
+import com.sola.testing.solatesting.test.ScrollerTesting;
+
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
 /**
  * Description:
  * <p/>
  * author: Sola
- * 2015/10/13
+ * 2015/10/16
  */
-public class RecyclerContainer extends RecycleContainerBase {
-
+@EActivity(R.layout.activity_test)
+public class TestActivity extends AppCompatActivity {
     // ===========================================================
     // Constants
     // ===========================================================
@@ -21,42 +24,30 @@ public class RecyclerContainer extends RecycleContainerBase {
     // ===========================================================
     // Fields
     // ===========================================================
-    RecyclerView mRecyclerView;
+
+    @ViewById
+    ScrollerTesting id_scroller_test;
 
     // ===========================================================
     // Constructors
     // ===========================================================
-    public RecyclerContainer(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public RecyclerContainer(Context context) {
-        super(context);
-    }
-
 
     // ===========================================================
     // Getter & Setter
     // ===========================================================
 
-    public RecyclerView getRecyclerView() {
-        return mRecyclerView;
-    }
-
     // ===========================================================
     // Methods for/from SuperClass/Interfaces
     // ===========================================================
-    @Override
-    protected RecyclerView retrieveRecycleView() {
-        if (getChildCount() > 1) {
-            throw new NullPointerException("");
-        }
-        mRecyclerView = (RecyclerView) getChildAt(0);
-        return mRecyclerView;
-    }
+
     // ===========================================================
     // Methods
     // ===========================================================
+
+    @Click
+    public void id_btn_test() {
+        id_scroller_test.startScroll();
+    }
 
     // ===========================================================
     // Inner and Anonymous Classes

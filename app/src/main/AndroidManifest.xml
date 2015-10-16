@@ -15,7 +15,7 @@
         android:theme="@style/MaterialTheme">
 
         <activity
-            android:name=".ui.RecycleViewActivity_"
+            android:name=".ui.RecycleContainerActivity_"
             android:screenOrientation="portrait"
             android:theme="@style/MaterialTheme"
             >
@@ -24,11 +24,22 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".ui.TestActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/MaterialTheme"/>
+        <activity
+            android:name=".ui.FixedMaterialActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/MaterialTheme"/>
         <activity
             android:name=".ui.RecycleDetailActivity_"
-            android:theme="@style/MaterialTheme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/MaterialTheme"/>
+        <activity
+            android:name=".ui.RecycleViewActivity_"
+            android:screenOrientation="portrait"
+            android:theme="@style/MaterialTheme"/>
 
         <activity
             android:name=".ui.MaterialsActivity_"
