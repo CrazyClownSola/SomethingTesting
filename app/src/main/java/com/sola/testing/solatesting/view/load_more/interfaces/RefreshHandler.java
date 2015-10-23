@@ -1,6 +1,6 @@
 package com.sola.testing.solatesting.view.load_more.interfaces;
 
-import com.sola.testing.solatesting.view.load_more.RecycleContainerBase;
+import com.sola.testing.solatesting.view.load_more.RecycleLoadMoreContainerBase;
 
 /**
  * Description:
@@ -22,6 +22,6 @@ public interface RefreshHandler {
     // ===========================================================
 
 
-    void onRefreshBegin(RecycleContainerBase container);
+    void onRefreshBegin(RecycleLoadMoreContainerBase container);
 
 }

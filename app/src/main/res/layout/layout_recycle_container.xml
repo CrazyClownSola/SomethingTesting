@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     >
 
-    <com.sola.testing.solatesting.view.load_more.RecyclerContainer
+    <com.sola.testing.solatesting.view.load_more.RecyclerLoadMoreContainer
         android:id="@+id/id_load_more_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,6 +19,6 @@
             android:layout_height="match_parent"
             />
 
-    </com.sola.testing.solatesting.view.load_more.RecyclerContainer>
+    </com.sola.testing.solatesting.view.load_more.RecyclerLoadMoreContainer>
 
 </in.srain.cube.views.ptr.PtrFrameLayout>

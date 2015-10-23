@@ -2,16 +2,13 @@ package com.sola.testing.solatesting.view.load_more.interfaces;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.sola.testing.solatesting.utils.LoadMoreHandler;
-import com.sola.testing.solatesting.utils.LoadMoreUIHandler;
-
 /**
  * Description:
  * <p/>
  * author: Sola
  * 2015/10/13
  */
-public interface IRecycleContainer {
+public interface IRecycleLoadMoreContainer {
     // ===========================================================
     // Constants
     // ===========================================================
@@ -31,9 +28,9 @@ public interface IRecycleContainer {
 
     /* ----------------------  上拉加载更多的 相关方法集合 --------------------  */
 
-    void setLoadMoreUIHandler(RecycleLoadMoreUIHandler handler);
+    void setLoadMoreUIHandler(IRecycleLoadMoreUIHandler handler);
 
-    void setLoadMoreHandler(RecycleLoadMoreHandler handler);
+    void setLoadMoreHandler(IRecycleLoadMoreHandler handler);
 
     void loadMoreFinish(boolean emptyResult, boolean hasMore);
 

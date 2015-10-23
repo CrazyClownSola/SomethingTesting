@@ -7,19 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.sola.testing.solatesting.R;
-import com.sola.testing.solatesting.view.load_more.RecycleContainerBase;
-import com.sola.testing.solatesting.view.load_more.RecyclerContainer;
-import com.sola.testing.solatesting.view.load_more.interfaces.RecycleLoadMoreHandler;
-import com.sola.testing.solatesting.view.load_more.interfaces.RecycleLoadMoreUIHandler;
-
-import org.androidannotations.annotations.EViewGroup;
-import org.androidannotations.annotations.ViewById;
+import com.sola.testing.solatesting.view.load_more.RecyclerLoadMoreContainer;
+import com.sola.testing.solatesting.view.load_more.interfaces.IRecycleLoadMoreHandler;
+import com.sola.testing.solatesting.view.load_more.interfaces.IRecycleLoadMoreUIHandler;
 
 import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
-import in.srain.cube.views.ptr.PtrUIHandler;
 
 /**
  * Description:
@@ -37,7 +32,7 @@ public class LowExpansionRecycleContainer extends PtrFrameLayout {
     // Fields
     // ===========================================================
 
-    RecyclerContainer id_load_more_container;
+    RecyclerLoadMoreContainer id_load_more_container;
 
     RecyclerView id_recycler_view;
 
@@ -79,7 +74,7 @@ public class LowExpansionRecycleContainer extends PtrFrameLayout {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.layout_recycle_container, this);
         super.onFinishInflate();
-        id_load_more_container = (RecyclerContainer) findViewById(R.id.id_load_more_container);
+        id_load_more_container = (RecyclerLoadMoreContainer) findViewById(R.id.id_load_more_container);
         id_recycler_view = id_load_more_container.getRecyclerView();
     }
 
@@ -111,11 +106,11 @@ public class LowExpansionRecycleContainer extends PtrFrameLayout {
         });
     }
 
-    public void setLoadMoreHandler(RecycleLoadMoreHandler handler) {
+    public void setLoadMoreHandler(IRecycleLoadMoreHandler handler) {
         id_load_more_container.setLoadMoreHandler(handler);
     }
 
-    public void setLoadMoreUIHandler(RecycleLoadMoreUIHandler handler) {
+    public void setLoadMoreUIHandler(IRecycleLoadMoreUIHandler handler) {
         id_load_more_container.setLoadMoreUIHandler(handler);
     }
 

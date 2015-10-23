@@ -1,6 +1,5 @@
 package com.sola.testing.solatesting.view.load_more;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,9 +8,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import com.sola.testing.solatesting.view.load_more.interfaces.IRecycleContainer;
-import com.sola.testing.solatesting.view.load_more.interfaces.RecycleLoadMoreHandler;
-import com.sola.testing.solatesting.view.load_more.interfaces.RecycleLoadMoreUIHandler;
+import com.sola.testing.solatesting.view.load_more.interfaces.IRecycleLoadMoreContainer;
+import com.sola.testing.solatesting.view.load_more.interfaces.IRecycleLoadMoreHandler;
+import com.sola.testing.solatesting.view.load_more.interfaces.IRecycleLoadMoreUIHandler;
 
 /**
  * Description:
@@ -19,7 +18,7 @@ import com.sola.testing.solatesting.view.load_more.interfaces.RecycleLoadMoreUIH
  * author: Sola
  * 2015/10/13
  */
-public abstract class RecycleContainerBase extends LinearLayout implements IRecycleContainer {
+public abstract class RecycleLoadMoreContainerBase extends LinearLayout implements IRecycleLoadMoreContainer {
 
     // ===========================================================
     // Constants
@@ -31,9 +30,9 @@ public abstract class RecycleContainerBase extends LinearLayout implements IRecy
 
     RecyclerView.OnScrollListener mOnScrollListener;
 
-    RecycleLoadMoreHandler mLoadMoreHandler;
+    IRecycleLoadMoreHandler mLoadMoreHandler;
 
-    RecycleLoadMoreUIHandler mLoadMoreUIHandler;
+    IRecycleLoadMoreUIHandler mLoadMoreUIHandler;
 
     boolean isLoading, mHasMore, mLoadError, mShowLoadingForFirstPage = false;
     boolean isListEmpty = true;
@@ -44,20 +43,20 @@ public abstract class RecycleContainerBase extends LinearLayout implements IRecy
     int mTotalItemCount = 0;// 所有项总数
     int mFirstVisibleItem = 0;// 显示的第一项
 
-    protected LAYOUT_MANAGER_TYPE layoutManagerType;
+       protected LAYOUT_MANAGER_TYPE layoutManagerType;
 
     // ===========================================================
     // Constructors
     // ===========================================================
-    public RecycleContainerBase(Context context) {
+    public RecycleLoadMoreContainerBase(Context context) {
         super(context);
     }
 
-    public RecycleContainerBase(Context context, AttributeSet attrs) {
+    public RecycleLoadMoreContainerBase(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public RecycleContainerBase(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RecycleLoadMoreContainerBase(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -88,12 +87,12 @@ public abstract class RecycleContainerBase extends LinearLayout implements IRecy
     }
 
     @Override
-    public void setLoadMoreUIHandler(RecycleLoadMoreUIHandler handler) {
+    public void setLoadMoreUIHandler(IRecycleLoadMoreUIHandler handler) {
         mLoadMoreUIHandler = handler;
     }
 
     @Override
-    public void setLoadMoreHandler(RecycleLoadMoreHandler handler) {
+    public void setLoadMoreHandler(IRecycleLoadMoreHandler handler) {
         mLoadMoreHandler = handler;
     }
 

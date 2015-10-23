@@ -10,8 +10,9 @@ import android.widget.TextView;
 
 import com.sola.testing.solatesting.R;
 import com.sola.testing.solatesting.recycleview.utils.IRecycleExtraItem;
-import com.sola.testing.solatesting.view.load_more.RecycleContainerBase;
-import com.sola.testing.solatesting.view.load_more.interfaces.RecycleLoadMoreUIHandler;
+import com.sola.testing.solatesting.view.load_more.RecycleLoadMoreContainerBase;
+import com.sola.testing.solatesting.view.load_more.interfaces.IRecycleLoadMoreContainer;
+import com.sola.testing.solatesting.view.load_more.interfaces.IRecycleLoadMoreUIHandler;
 
 /**
  * Description:
@@ -19,7 +20,7 @@ import com.sola.testing.solatesting.view.load_more.interfaces.RecycleLoadMoreUIH
  * author: Sola
  * 2015/10/13
  */
-public class RecycleFooterView implements IRecycleExtraItem, RecycleLoadMoreUIHandler {
+public class RecycleFooterView implements IRecycleExtraItem, IRecycleLoadMoreUIHandler {
 
     // ===========================================================
     // Constants
@@ -68,14 +69,14 @@ public class RecycleFooterView implements IRecycleExtraItem, RecycleLoadMoreUIHa
 
 
     @Override
-    public void onLoading(RecycleContainerBase container) {
+    public void onLoading(IRecycleLoadMoreContainer container) {
         mHolder.id_footer_text.setVisibility(View.VISIBLE);
         mHolder.id_footer_text.setText("努力加载中，请稍后");
         mHolder.id_footer_progress.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void onLoadFinish(RecycleContainerBase container, boolean empty, boolean hasMore) {
+    public void onLoadFinish(IRecycleLoadMoreContainer container, boolean empty, boolean hasMore) {
         if (!hasMore) {
 //            mHolder.id_footer_text.setVisibility(View.VISIBLE);
             mHolder.id_footer_text.setText("╮(╯_╰)╭ 再怎么加载也没有了");
@@ -85,15 +86,17 @@ public class RecycleFooterView implements IRecycleExtraItem, RecycleLoadMoreUIHa
     }
 
     @Override
-    public void onWaitToLoadMore(RecycleContainerBase container) {
+    public void onWaitToLoadMore(IRecycleLoadMoreContainer container) {
 
     }
 
     @Override
-    public void onLoadError(RecycleContainerBase container, int errorCode, String errorMessage) {
+    public void onLoadError(IRecycleLoadMoreContainer container, int errorCode, String errorMessage) {
         mHolder.id_footer_text.setText("(╯‵□′)╯︵┻━┻ 拿不到数据");
         mHolder.id_footer_progress.setVisibility(View.INVISIBLE);
     }
+
+   
     // ===========================================================
     // Methods
     // ===========================================================

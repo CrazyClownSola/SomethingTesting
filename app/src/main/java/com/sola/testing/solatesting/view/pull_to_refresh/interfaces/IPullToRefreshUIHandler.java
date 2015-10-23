@@ -1,6 +1,6 @@
 package com.sola.testing.solatesting.view.pull_to_refresh.interfaces;
 
-import com.sola.testing.solatesting.view.pull_to_refresh.PullToRefreshContainer;
+import com.sola.testing.solatesting.view.pull_to_refresh.RecyclerViewRefreshContainerBase;
 
 /**
  * Description:
@@ -24,23 +24,31 @@ public interface IPullToRefreshUIHandler {
     /**
      * When the content view has reached top and refresh has been completed, view will be reset.
      */
-    void onUIReset(PullToRefreshContainer frame);
+    void onUIReset(RecyclerViewRefreshContainerBase frame);
 
     /**
      * prepare for loading
      */
-    void onUIRefreshPrepare(PullToRefreshContainer frame);
+    void onUIRefreshPrepare(RecyclerViewRefreshContainerBase frame);
 
     /**
      * perform refreshing UI
      */
-    void onUIRefreshBegin(PullToRefreshContainer frame);
+    void onUIRefreshBegin(RecyclerViewRefreshContainerBase frame);
 
     /**
      * perform UI after refresh
      */
-    void onUIRefreshComplete(PullToRefreshContainer frame);
+    void onUIRefreshComplete(RecyclerViewRefreshContainerBase frame);
 
-    void onUIPositionChange(PullToRefreshContainer frame, boolean isUnderTouch, byte status);
+    /**
+     * 一般用于判断 当前拖动的位置是否超越警戒线
+     */
+    void onUIPositionChange(RecyclerViewRefreshContainerBase frame,
+                            boolean isUnderTouch,
+                            byte status,
+                            int currentPos,
+                            int lastPos,
+                            int offsetHeight);
 
 }

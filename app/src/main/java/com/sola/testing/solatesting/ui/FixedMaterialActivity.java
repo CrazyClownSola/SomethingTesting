@@ -14,11 +14,11 @@ import com.sola.testing.solatesting.TestItemDTO;
 import com.sola.testing.solatesting.recycleview.RecycleAnimatorAdapter;
 import com.sola.testing.solatesting.recycleview.RecycleFooterView;
 import com.sola.testing.solatesting.recycleview.utils.IRecycleAnimatorListItem;
-import com.sola.testing.solatesting.view.load_more.RecycleContainerBase;
+import com.sola.testing.solatesting.view.load_more.RecycleLoadMoreContainerBase;
 import com.sola.testing.solatesting.view.load_more.RecycleHeaderView;
 import com.sola.testing.solatesting.view.load_more.RecycleHeaderView_;
-import com.sola.testing.solatesting.view.load_more.RecyclerContainer;
-import com.sola.testing.solatesting.view.load_more.interfaces.RecycleLoadMoreHandler;
+import com.sola.testing.solatesting.view.load_more.RecyclerLoadMoreContainer;
+import com.sola.testing.solatesting.view.load_more.interfaces.IRecycleLoadMoreHandler;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
@@ -58,7 +57,7 @@ public class FixedMaterialActivity extends AppCompatActivity {
     TabLayout id_tab_layout;
 
     @ViewById
-    RecyclerContainer id_load_more_container;
+    RecyclerLoadMoreContainer id_load_more_container;
 
     @ViewById
     PtrFrameLayout id_ptr_frame;
@@ -123,12 +122,12 @@ public class FixedMaterialActivity extends AppCompatActivity {
         if (footerView == null)
             footerView = new RecycleFooterView();
 
-        id_load_more_container.setLoadMoreHandler(new RecycleLoadMoreHandler() {
-            @Override
-            public void onLoadMore(RecycleContainerBase container) {
-                loadMore();
-            }
-        });
+//        id_load_more_container.setLoadMoreHandler(new IRecycleLoadMoreHandler() {
+//            @Override
+//            public void onLoadMore(RecycleLoadMoreContainerBase container) {
+//                loadMore();
+//            }
+//        });
         id_load_more_container.setLoadMoreUIHandler(footerView);
         id_load_more_container.setShowLoadingForFirstPage(true);
     }

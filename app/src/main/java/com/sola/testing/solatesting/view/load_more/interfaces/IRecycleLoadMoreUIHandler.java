@@ -1,6 +1,6 @@
 package com.sola.testing.solatesting.view.load_more.interfaces;
 
-import com.sola.testing.solatesting.view.load_more.RecycleContainerBase;
+import com.sola.testing.solatesting.view.load_more.RecycleLoadMoreContainerBase;
 
 /**
  * Description:
@@ -8,7 +8,7 @@ import com.sola.testing.solatesting.view.load_more.RecycleContainerBase;
  * author: Sola
  * 2015/10/13
  */
-public interface RecycleLoadMoreUIHandler {
+public interface IRecycleLoadMoreUIHandler {
     // ===========================================================
     // Constants
     // ===========================================================
@@ -20,11 +20,11 @@ public interface RecycleLoadMoreUIHandler {
     // ===========================================================
     // Methods
     // ===========================================================
-    void onLoading(RecycleContainerBase container);
+    void onLoading(IRecycleLoadMoreContainer container);
 
-    void onLoadFinish(RecycleContainerBase container, boolean empty, boolean hasMore);
+    void onLoadFinish(IRecycleLoadMoreContainer container, boolean empty, boolean hasMore);
 
-    void onWaitToLoadMore(RecycleContainerBase container);
+    void onWaitToLoadMore(IRecycleLoadMoreContainer container);
 
-    void onLoadError(RecycleContainerBase container, int errorCode, String errorMessage);
+    void onLoadError(IRecycleLoadMoreContainer container, int errorCode, String errorMessage);
 }

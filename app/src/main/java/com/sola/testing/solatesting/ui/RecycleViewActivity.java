@@ -5,34 +5,27 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.transition.ChangeTransform;
-import android.transition.Explode;
-import android.transition.Fade;
-import android.transition.Slide;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 
 import com.sola.testing.solatesting.MainApplication;
 import com.sola.testing.solatesting.R;
 import com.sola.testing.solatesting.TestItemDTO;
-import com.sola.testing.solatesting.TestTwoItem;
 import com.sola.testing.solatesting.recycleview.BasicRecycleViewAdapter;
 import com.sola.testing.solatesting.recycleview.RecycleFooterView;
 import com.sola.testing.solatesting.recycleview.utils.IRecycleListItem;
-import com.sola.testing.solatesting.view.load_more.RecycleContainerBase;
+import com.sola.testing.solatesting.view.load_more.RecycleLoadMoreContainerBase;
 import com.sola.testing.solatesting.view.load_more.RecycleHeaderView;
 import com.sola.testing.solatesting.view.load_more.RecycleHeaderView_;
-import com.sola.testing.solatesting.view.load_more.RecyclerContainer;
-import com.sola.testing.solatesting.view.load_more.interfaces.RecycleLoadMoreHandler;
+import com.sola.testing.solatesting.view.load_more.RecyclerLoadMoreContainer;
+import com.sola.testing.solatesting.view.load_more.interfaces.IRecycleLoadMoreHandler;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -80,7 +73,7 @@ public class RecycleViewActivity extends AppCompatActivity {
     RecyclerView id_recycler_view;
 
     @ViewById
-    RecyclerContainer id_load_more_container;
+    RecyclerLoadMoreContainer id_load_more_container;
 
 //    RecycleAnimatorAdapter<IRecycleAnimatorListItem> adapter;
 
@@ -177,12 +170,12 @@ public class RecycleViewActivity extends AppCompatActivity {
 //        getWindow().setEnterTransition(new Slide());
 
         setSupportActionBar(id_tool_bar);
-        id_load_more_container.setLoadMoreHandler(new RecycleLoadMoreHandler() {
-            @Override
-            public void onLoadMore(RecycleContainerBase container) {
-                loadMore();
-            }
-        });
+//        id_load_more_container.setLoadMoreHandler(new IRecycleLoadMoreHandler() {
+//            @Override
+//            public void onLoadMore(RecycleLoadMoreContainerBase container) {
+//                loadMore();
+//            }
+//        });
         //设置布局形式
         id_recycler_view.setLayoutManager(new LinearLayoutManager(this));
         id_recycler_view.setItemAnimator(new DefaultItemAnimator());

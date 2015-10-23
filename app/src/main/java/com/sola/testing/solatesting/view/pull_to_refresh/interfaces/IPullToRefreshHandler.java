@@ -2,7 +2,7 @@ package com.sola.testing.solatesting.view.pull_to_refresh.interfaces;
 
 import android.view.View;
 
-import com.sola.testing.solatesting.view.pull_to_refresh.PullToRefreshContainer;
+import com.sola.testing.solatesting.view.pull_to_refresh.RecyclerViewRefreshContainerBase;
 
 /**
  * Description:
@@ -28,12 +28,12 @@ public interface IPullToRefreshHandler {
      * <p/>
      * {@link in.srain.cube.views.ptr.PtrDefaultHandler#checkContentCanBePulledDown}
      */
-    boolean checkCanDoRefresh(final PullToRefreshContainer frame, final View content, final View header);
+    boolean checkCanDoRefresh(final RecyclerViewRefreshContainerBase frame, final View content, final View header);
 
     /**
      * When refresh begin
      *
      * @param frame
      */
-    void onRefreshBegin(final PullToRefreshContainer frame);
+    void onRefreshBegin(final RecyclerViewRefreshContainerBase frame);
 }
