@@ -76,11 +76,11 @@ public class RecycleDetailActivity extends AppCompatActivity {
     public void afterViews() {
         setSupportActionBar(id_tool_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getWindow().setEnterTransition(new Slide());
-//        getWindow().setEnterTransition(new Fade());
-        byte[] byteArray = getIntent().getByteArrayExtra("image");
-        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-        id_image_item_shown.setImageBitmap(bitmap);
+//        getWindow().setEnterTransition(new Slide());
+////        getWindow().setEnterTransition(new Fade());
+//        byte[] byteArray = getIntent().getByteArrayExtra("image");
+//        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+//        id_image_item_shown.setImageBitmap(bitmap);
     }
 
     // ===========================================================

@@ -20,9 +20,18 @@ dependencies {
     // 一个第三方的下拉刷新的库包
     compile presentationDependencies.cube
     compile presentationDependencies.eventBus
+
+    // rxJava调用部分
+    compile presentationDependencies.rxJava
+    compile presentationDependencies.rxAndroid
+
+    compile presentationDependencies.retrofit
+    compile presentationDependencies.retrofitGson
+    compile presentationDependencies.retrofitRx
+
     //    compile presentationDependencies.cube_sdk
     // gson解析的库包
-    compile presentationDependencies.gson
+//    compile presentationDependencies.gson
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/ormlite-android-4.49-SNAPSHOT.jar')
     compile files('libs/ormlite-core-4.49-SNAPSHOT.jar')

@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Scroller;
 
 /**
@@ -109,6 +110,7 @@ public class ScrollerTesting extends ViewGroup {
             mLastFlingY = y;
             invalidate();
 //            mScroller.f
+//            Animation
         }
     }
 
