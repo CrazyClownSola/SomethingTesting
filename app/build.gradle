@@ -2,6 +2,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
+apply plugin: 'me.tatarka.retrolambda'
+
 //def AAVersion = '3.3.1'
 
 dependencies {
@@ -20,18 +22,15 @@ dependencies {
     // 一个第三方的下拉刷新的库包
     compile presentationDependencies.cube
     compile presentationDependencies.eventBus
-
     // rxJava调用部分
     compile presentationDependencies.rxJava
     compile presentationDependencies.rxAndroid
-
     compile presentationDependencies.retrofit
     compile presentationDependencies.retrofitGson
     compile presentationDependencies.retrofitRx
-
     //    compile presentationDependencies.cube_sdk
     // gson解析的库包
-//    compile presentationDependencies.gson
+    //    compile presentationDependencies.gson
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/ormlite-android-4.49-SNAPSHOT.jar')
     compile files('libs/ormlite-core-4.49-SNAPSHOT.jar')
@@ -42,7 +41,6 @@ apt {
         androidManifestFile variant.outputs[0].processResources.manifestFile
     }
 }
-//
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext");
@@ -65,5 +63,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+
+retrolambda {
+    jdk System.getenv("JAVA_HOME")
+    javaVersion JavaVersion.VERSION_1_7
+    defaultMethods false
+    incremental true
 }
 
