@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.0.0-alpha1'
+        classpath 'com.android.tools.build:gradle:2.0.0-alpha9'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
         // lambda表达式
         classpath 'me.tatarka:gradle-retrolambda:3.2.3'
@@ -22,7 +22,4 @@ allprojects {
         androidVersionCode = 1
         androidVersionName = "1.0"
     }
-//    repositories {
-//        jcenter()
-//    }
 }
